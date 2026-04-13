@@ -22,7 +22,7 @@ export default function Hero() {
         >
           <div className="shape-leaf flex items-center gap-2 bg-white/5 border border-[var(--color-brand-light)]/20 px-5 py-2.5 text-sm font-medium text-[var(--color-brand-light)]">
             <GraduationCap className="w-4 h-4 text-[var(--color-brand-green1)]" />
-            <span>Homologado MEC</span>
+            <span>Homologado MEC (Nota 5)</span>
           </div>
           <div className="shape-leaf flex items-center gap-2 bg-white/5 border border-[var(--color-brand-light)]/20 px-5 py-2.5 text-sm font-medium text-[var(--color-brand-light)]">
             <ShieldCheck className="w-4 h-4 text-[var(--color-brand-blue)]" />
