@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-dark: #010404;
+  --color-brand-light: #E6E8E6;
+  --color-brand-green1: #6FB03A;
+  --color-brand-green2: #58AE69;
+  --color-brand-blue: #31A8A8;
+  
+  --font-primary: 'Outfit', sans-serif;
+  --font-secondary: 'Montserrat', sans-serif;
+  --font-impact: 'Bebas Neue', sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-brand-dark);
+    color: var(--color-brand-light);
+    font-family: var(--font-secondary);
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+  }
+}
+
+@layer utilities {
+  .shape-leaf {
+    border-radius: 24px 0px 24px 0px;
+  }
+  .shape-leaf-inverse {
+    border-radius: 0px 24px 0px 24px;
+  }
+  
+  .bg-brand-gradient {
+    background: linear-gradient(90deg, var(--color-brand-green1), var(--color-brand-green2), var(--color-brand-blue));
+  }
+  
+  .text-brand-gradient {
+    background: linear-gradient(90deg, var(--color-brand-green1), var(--color-brand-green2), var(--color-brand-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+.bg-grid {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(49, 168, 168, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(111, 176, 58, 0.08) 1px, transparent 1px);
+  position: absolute;
+  inset: 0;
+}
+
+/* Glowing grid accents */
+.bg-grid::before {
+  content: '';
+  position: absolute;
+  left: 30%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--color-brand-green1), transparent);
+  box-shadow: 0 0 15px 3px var(--color-brand-green1);
+  opacity: 0.3;
+}
+
+.bg-grid::after {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-brand-blue), transparent);
+  box-shadow: 0 0 15px 3px var(--color-brand-blue);
+  opacity: 0.3;
+}
+
+.radar-scan {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vw;
+  max-width: 900px;
+  max-height: 900px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg,
+    rgba(111, 176, 58, 0.02) 180deg,
+    rgba(111, 176, 58, 0.1) 320deg,
+    rgba(111, 176, 58, 0.5) 360deg
+  );
+  animation: scan 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
