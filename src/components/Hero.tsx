@@ -43,7 +43,7 @@ export default function Hero() {
         >
           Pós-Graduação em <br className="hidden md:block" />
           <span className="inline-block bg-brand-gradient text-[var(--color-brand-dark)] px-4 py-1 mt-2 mb-1 shape-leaf transform -skew-x-6">
-            <span className="inline-block transform skew-x-6">Georreferenciamento &amp; Geoprocessamento</span>
+            <span className="inline-block skew-x-6">Georreferenciamento, Geoprocessamento</span>
           </span> <br className="hidden md:block" />
           e Sensoriamento Remoto
         </motion.h1>
