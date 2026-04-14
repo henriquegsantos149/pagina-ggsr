@@ -4,49 +4,49 @@ const facultyMembers = [
   {
     name: "Henrique Gonzalez",
     title: "Engenheiro Ambiental (UFRJ)",
-    image: "/posggsr/faculty/henrique.png",
+    image: "./faculty/henrique.png",
     resume: "Experiência sólida na área ambiental, focado em geoprocessamento e soluções tecnológicas."
   },
   {
     name: "Raquel Carnivalle Melillo",
     title: "Doutora em Ambiente e Sociedade (UNICAMP)",
-    image: "/posggsr/faculty/raquel.png",
+    image: "./faculty/raquel.png",
     resume: "Pesquisadora com vasta contribuição para estudos de impacto ambiental e sustentabilidade."
   },
   {
     name: "Rodolfo Finatti",
     title: "Geógrafo (UNESP), PhD em Geografia (USP)",
-    image: "/posggsr/faculty/rodolfo.png",
+    image: "./faculty/rodolfo.png",
     resume: "Especialista com profunda bagagem acadêmica e prática na formulação de mapas."
   },
   {
     name: "Vitor do Sacramento",
     title: "Geólogo (UNB) com MBA",
-    image: "/posggsr/faculty/vitor.png",
+    image: "./faculty/vitor.png",
     resume: "Combina conhecimento profundo do solo com gestão estratégica em geotecnologias."
   },
   {
     name: "Luís Antônio Soares",
     title: "Engenheiro Agrimensor (UFU)",
-    image: "/posggsr/faculty/luis.png",
+    image: "./faculty/luis.png",
     resume: "Experiência de campo em demarcações e georreferenciamento de imóveis rurais."
   },
   {
     name: "Ana Beatriz Ulhoa",
     title: "Engenheira Ambiental",
-    image: "/posggsr/faculty/ana.png",
+    image: "./faculty/ana.png",
     resume: "Focada em análises geoespaciais voltadas para a sustentabilidade e impacto urbano."
   },
   {
     name: "Charlie Turette Lopes",
     title: "Engenheiro de Produção",
-    image: "/posggsr/faculty/charlie.png",
+    image: "./faculty/charlie.png",
     resume: "Especialista em otimização de processos usando tecnologias de sensoriamento remoto."
   },
   {
     name: "Bismarck Feuchard",
     title: "Eng. Civil (INCRA)",
-    image: "/posggsr/faculty/bismarck.png",
+    image: "./faculty/bismarck.png",
     resume: "Expertise de ponta na legislação e requisitos técnicos do INCRA."
   }
 ];

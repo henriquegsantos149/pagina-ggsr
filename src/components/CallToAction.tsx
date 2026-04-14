@@ -47,7 +47,7 @@ export default function CallToAction() {
             </a>
             
             <a 
-              href="/posggsr/ementa-pos-ggsr.pdf" 
+              href="./ementa-pos-ggsr.pdf" 
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Baixar a ementa completa da Pós-Graduação em Georreferenciamento, Geoprocessamento e Sensoriamento Remoto em PDF"
