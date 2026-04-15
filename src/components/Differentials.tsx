@@ -57,12 +57,12 @@ export default function Differentials() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="shape-leaf bg-white/5 p-8 border border-white/10 hover:border-[var(--color-brand-green2)]/30 transition-all flex flex-col items-start gap-5 group relative overflow-hidden"
+                className="shape-leaf bg-white/5 p-8 border border-white/10 hover:border-[var(--color-brand-secondary)]/30 transition-all flex flex-col items-start gap-5 group relative overflow-hidden"
               >
                 {/* corner gradient touch */}
                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-brand-gradient opacity-10 rounded-full blur-[30px] group-hover:opacity-30 transition-opacity"></div>
                 
-                <div className="w-16 h-16 shape-leaf bg-white/5 border border-white/10 flex items-center justify-center text-[var(--color-brand-green1)] group-hover:scale-110 group-hover:bg-brand-gradient group-hover:text-white transition-all duration-500">
+                <div className="w-16 h-16 shape-leaf bg-white/5 border border-white/10 flex items-center justify-center text-[var(--color-brand-primary)] group-hover:scale-110 group-hover:bg-brand-gradient group-hover:text-white transition-all duration-500">
                   <Icon className="w-8 h-8 group-hover:text-white transition-colors duration-500" />
                 </div>
                 <div className="relative z-10 mt-2">

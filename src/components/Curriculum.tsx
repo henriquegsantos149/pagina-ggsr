@@ -53,14 +53,14 @@ export default function Curriculum() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-24 bg-[var(--color-brand-dark)] relative overflow-hidden">
+    <section id="curriculo" className="py-24 bg-[var(--color-brand-dark)] relative overflow-hidden">
       {/* background grid again for continuity */}
       <div className="absolute inset-0 bg-grid opacity-[0.05]"></div>
       
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 font-primary uppercase tracking-wide">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 font-primary uppercase tracking-wide">
             Conteúdo <span className="inline-block bg-brand-gradient text-[var(--color-brand-dark)] px-3 py-1 mt-2 mb-1 shape-leaf transform -skew-x-6"><span className="inline-block transform skew-x-6">Programático</span></span>
           </h2>
           <p className="text-[var(--color-brand-light)]/70 max-w-2xl mx-auto font-secondary">11 módulos desenhados para conectar a teoria à prática, com foco absoluto no que o mercado exige.</p>
@@ -76,7 +76,7 @@ export default function Curriculum() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 key={index}
-                className={`shape-leaf bg-black/40 border transition-all duration-300 ${isOpen ? 'border-[var(--color-brand-green2)]/40 shadow-[0_0_20px_rgba(88,174,105,0.1)]' : 'border-white/5 hover:border-[var(--color-brand-blue)]/30'}`}
+                className={`shape-leaf bg-black/40 border transition-all duration-300 ${isOpen ? 'border-[var(--color-brand-secondary)]/40 shadow-[0_0_20px_rgba(41,167,217,0.1)]' : 'border-white/5 hover:border-[var(--color-brand-accent)]/30'}`}
               >
                 <button 
                   onClick={() => setOpenIndex(isOpen ? null : index)}
@@ -86,16 +86,16 @@ export default function Curriculum() {
                     <div className={`w-12 h-12 shape-leaf flex items-center justify-center font-bold font-impact text-xl transition-all duration-300 ${isOpen ? 'bg-brand-gradient text-[var(--color-brand-dark)] shadow-[0_0_15px_rgba(88,174,105,0.4)]' : 'bg-white/5 text-[var(--color-brand-light)]/40 group-hover:bg-white/10'}`}>
                       {(index + 1).toString().padStart(2, '0')}
                     </div>
-                    <h3 className={`text-xl font-bold font-primary uppercase tracking-wide transition-colors duration-300 ${isOpen ? 'text-[var(--color-brand-green2)]' : 'text-[var(--color-brand-light)]'}`}>
+                    <h3 className={`text-xl font-bold font-primary uppercase tracking-wide transition-colors duration-300 ${isOpen ? 'text-[var(--color-brand-secondary)]' : 'text-[var(--color-brand-light)]'}`}>
                       {mod.title}
                     </h3>
                   </div>
-                  <ChevronDown className={`w-6 h-6 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[var(--color-brand-green2)]' : 'text-[var(--color-brand-light)]/40'}`} />
+                  <ChevronDown className={`w-6 h-6 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[var(--color-brand-secondary)]' : 'text-[var(--color-brand-light)]/40'}`} />
                 </button>
                 
                 <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div className="px-8 pb-8 pt-0 pl-26 flex items-start gap-4">
-                    <MapPin className="w-5 h-5 text-[var(--color-brand-blue)] shrink-0 mt-1" />
+                    <MapPin className="w-5 h-5 text-[var(--color-brand-accent)] shrink-0 mt-1" />
                     <p className="text-[var(--color-brand-light)]/70 text-lg font-secondary">{mod.description}</p>
                   </div>
                 </div>
