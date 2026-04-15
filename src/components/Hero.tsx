@@ -19,6 +19,7 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="flex flex-wrap justify-center gap-3 mb-8"
         >
+          {/* Homologado MEC */}
           <div className="shape-leaf flex items-center gap-3 bg-white/5 border border-[var(--color-brand-light)]/20 px-5 py-2.5 text-sm font-medium text-[var(--color-brand-light)]">
             <GraduationCap className="w-4 h-4 text-[var(--color-brand-primary)]" />
             <span>Homologado MEC (Nota 5)</span>
@@ -28,13 +29,36 @@ export default function Hero() {
               className="h-10 md:h-12 w-auto object-contain"
             />
           </div>
+
+          {/* Chancela Anhanguera */}
           <div className="shape-leaf flex items-center gap-2 bg-white/5 border border-[var(--color-brand-light)]/20 px-5 py-2.5 text-sm font-medium text-[var(--color-brand-light)]">
-            <ShieldCheck className="w-4 h-4 text-[var(--color-brand-accent)]" />
-            <span>CREA/CONFEA</span>
-          </div>
-          <div className="shape-leaf flex items-center gap-2 bg-white/5 border border-white/20 px-5 py-2.5 text-sm font-medium text-[var(--color-brand-light)]">
             <Map className="w-4 h-4 text-[var(--color-brand-secondary)]" />
-            <span>Anhanguera</span>
+            <span>Chancela Anhanguera</span>
+          </div>
+
+          {/* Parceiros do curso */}
+          <div className="shape-leaf flex flex-col items-center bg-white/5 border border-[var(--color-brand-light)]/20 px-5 py-3 gap-2">
+            <span className="text-[10px] uppercase tracking-widest text-[var(--color-brand-accent)] font-semibold">Parceiros do curso</span>
+            <div className="flex items-center gap-4">
+              {/* CREA */}
+              <div className="flex flex-col items-center gap-1">
+                <img 
+                  src={`${import.meta.env.BASE_URL}logo-crea.png`} 
+                  alt="Logo CREA" 
+                  className="h-8 w-auto object-contain"
+                />
+                <span className="text-[9px] text-[var(--color-brand-light)]/60 uppercase tracking-wider">CREA/CONFEA</span>
+              </div>
+              <div className="w-px h-8 bg-white/10" />
+              {/* Anhanguera */}
+              <div className="flex flex-col items-center gap-1">
+                <img 
+                  src={`${import.meta.env.BASE_URL}logo-anhanguera.png`} 
+                  alt="Logo Anhanguera" 
+                  className="h-8 w-auto object-contain"
+                />
+              </div>
+            </div>
           </div>
         </motion.div>
 
