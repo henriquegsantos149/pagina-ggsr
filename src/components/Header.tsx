@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-
 export default function Header() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#31364a]/80 backdrop-blur-md border-b border-white/10 py-1">
