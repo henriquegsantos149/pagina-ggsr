@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ChevronDown, MapPin } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 
 const modules = [
