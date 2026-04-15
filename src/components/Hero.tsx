@@ -25,7 +25,7 @@ export default function Hero() {
             <img 
               src={`${import.meta.env.BASE_URL}mec-badge.png`} 
               alt="Selo MEC" 
-              className="h-6 w-auto object-contain"
+              className="h-10 md:h-12 w-auto object-contain"
             />
           </div>
           <div className="shape-leaf flex items-center gap-2 bg-white/5 border border-[var(--color-brand-light)]/20 px-5 py-2.5 text-sm font-medium text-[var(--color-brand-light)]">
