@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Map, GraduationCap, ChevronDown } from 'lucide-react';
+import { GraduationCap, ChevronDown } from 'lucide-react';
 
 export default function Hero() {
   return (
