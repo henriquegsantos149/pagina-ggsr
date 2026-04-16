@@ -27,11 +27,18 @@ export default function Hero() {
           />
 
           {/* Ambiental Pro */}
-          <img 
-            src={`${import.meta.env.BASE_URL}logo-ambientalpro.png`} 
-            alt="Ambiental Pro" 
-            className="h-14 md:h-16 w-auto object-contain hover:scale-105 transition-transform"
-          />
+          <a 
+            href="https://www.ambientalpro.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group"
+          >
+            <img 
+              src={`${import.meta.env.BASE_URL}logo-ambientalpro.png`} 
+              alt="Ambiental Pro" 
+              className="h-14 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform"
+            />
+          </a>
 
           {/* MEC */}
           <a 
