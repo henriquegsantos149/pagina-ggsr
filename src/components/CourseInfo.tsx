@@ -21,7 +21,7 @@ export default function CourseInfo() {
         
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 font-primary uppercase tracking-wide">
-            Formato do <span className="text-brand-gradient">Curso</span>
+            Sobre o <span className="text-brand-gradient">Curso</span>
           </h2>
           <p className="text-[var(--color-brand-light)]/70 max-w-2xl mx-auto">Tudo que você precisa saber sobre a estrutura técnica e operacional da Pós-Graduação.</p>
         </div>
@@ -64,14 +64,21 @@ export default function CourseInfo() {
           </motion.div>
 
           {/* Card 4 */}
-          <motion.div variants={item} className="shape-leaf bg-[var(--color-brand-dark)] border border-white/10 p-8 hover:border-[var(--color-brand-primary)]/50 transition-colors group relative overflow-hidden">
+          <motion.a 
+            href="https://emec.mec.gov.br/emec/consulta-cadastro/detalhamento/d96957f455f6405d14c6542552b0f6eb/NTE1/93916316abe23148507bd4c260e4b878/Mjc0OTUy"
+            target="_blank"
+            rel="noopener noreferrer"
+            variants={item} 
+            className="shape-leaf bg-[var(--color-brand-dark)] border border-white/10 p-8 hover:border-[var(--color-brand-primary)]/50 transition-colors group relative overflow-hidden flex flex-col items-center justify-center text-center cursor-pointer"
+          >
             <div className="absolute top-0 right-0 w-24 h-24 bg-brand-gradient opacity-10 rounded-full blur-[40px] group-hover:opacity-30 transition-opacity"></div>
-            <div className="w-14 h-14 shape-leaf bg-white/5 flex items-center justify-center mb-6 border border-white/10 group-hover:border-[var(--color-brand-primary)]/50 transition-colors">
-              <GraduationCap className="w-7 h-7 text-[var(--color-brand-primary)]" />
-            </div>
-            <h3 className="text-lg font-semibold text-[var(--color-brand-light)] mb-2 font-primary uppercase">Pré-requisito</h3>
-            <p className="text-2xl font-impact tracking-wider text-brand-gradient leading-tight">Ensino Sup.<br/><span className="text-sm font-secondary tracking-normal text-[var(--color-brand-light)]/60 uppercase">Completo</span></p>
-          </motion.div>
+            <img 
+              src={`${import.meta.env.BASE_URL}mec-badge.png`} 
+              alt="Selo MEC" 
+              className="h-20 w-auto object-contain mb-3 group-hover:scale-105 transition-transform"
+            />
+            <h3 className="text-lg font-bold text-[var(--color-brand-primary)] uppercase tracking-wider">Nota 5 no MEC</h3>
+          </motion.a>
         </motion.div>
 
         {/* Footer info area: Chancela and Parceiros */}
@@ -104,7 +111,7 @@ export default function CourseInfo() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="md:col-span-1 shape-leaf flex flex-col justify-center items-center bg-white/5 border border-white/10 p-8 relative overflow-hidden gap-6"
           >
-            <h3 className="text-xl font-bold text-[var(--color-brand-light)] font-primary uppercase tracking-wide text-center">Parceiros do curso</h3>
+            <h3 className="text-xl font-bold text-[var(--color-brand-light)] font-primary uppercase tracking-wide text-center">Nossos parceiros</h3>
             <div className="flex items-center justify-center gap-6">
               {/* CREA */}
               <div className="flex flex-col items-center gap-2">

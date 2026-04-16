@@ -8,7 +8,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 w-full z-50 bg-[#1a1d2e]/90 backdrop-blur-md border-b border-white/10 py-1">
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center gap-4">
         {/* Logo */}
-        <div className="flex justify-start">
+        <div className="flex justify-start flex-1">
           <img 
             src={`${import.meta.env.BASE_URL}logo.png`} 
             alt="Pós GGSR Logo" 
@@ -17,7 +17,7 @@ export default function Header() {
         </div>
         
         {/* Mobile menu button */}
-        <div className="md:hidden">
+        <div className="md:hidden flex justify-end flex-1">
           <button onClick={() => setIsOpen(!isOpen)} className="text-[var(--color-brand-light)] p-2">
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -30,6 +30,9 @@ export default function Header() {
           <a href="#professores" className="text-xs font-medium hover:text-[var(--color-brand-accent)] transition-colors uppercase tracking-widest whitespace-nowrap">Professores</a>
           <a href="#faq" className="text-xs font-medium hover:text-[var(--color-brand-primary)] transition-colors uppercase tracking-widest whitespace-nowrap">FAQ</a>
         </nav>
+
+        {/* Right Spacer for Desktop Centering */}
+        <div className="hidden md:block flex-1"></div>
       </div>
 
       {/* Navigation - Mobile Menu Dropdown */}

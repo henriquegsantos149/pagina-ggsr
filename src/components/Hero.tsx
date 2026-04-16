@@ -17,27 +17,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex flex-wrap justify-center gap-3 mb-8"
+          className="flex justify-center mb-8 pointer-events-none"
         >
-          {/* Homologado MEC */}
-          <div className="shape-leaf flex items-center gap-3 bg-white/5 border border-[var(--color-brand-light)]/20 px-5 py-2.5 text-sm font-medium text-[var(--color-brand-light)]">
-            <GraduationCap className="w-4 h-4 text-[var(--color-brand-primary)]" />
-            <span>Homologado MEC (Nota 5)</span>
-            <img 
-              src={`${import.meta.env.BASE_URL}mec-badge.png`} 
-              alt="Selo MEC" 
-              className="h-10 md:h-12 w-auto object-contain"
-            />
-          </div>
-          
           {/* Ambiental Pro */}
-          <div className="shape-leaf flex items-center gap-3 bg-white/5 border border-[var(--color-brand-light)]/20 px-5 py-2.5 text-sm font-medium text-[var(--color-brand-light)]">
-            <img 
-              src={`${import.meta.env.BASE_URL}logo-ambientalpro.png`} 
-              alt="Ambiental Pro" 
-              className="h-10 md:h-12 w-auto object-contain"
-            />
-          </div>
+          <img 
+            src={`${import.meta.env.BASE_URL}logo-ambientalpro.png`} 
+            alt="Ambiental Pro" 
+            className="h-10 md:h-12 w-auto object-contain"
+          />
         </motion.div>
 
         {/* Title */}
