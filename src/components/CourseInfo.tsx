@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Clock, BookOpen, MonitorPlay, GraduationCap, Award } from 'lucide-react';
+import { Clock, BookOpen, MonitorPlay, Award } from 'lucide-react';
 
 export default function CourseInfo() {
   const container = {
