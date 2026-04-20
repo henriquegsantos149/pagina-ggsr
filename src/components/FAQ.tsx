@@ -5,7 +5,7 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 const faqs = [
   {
     q: "A Pós-Graduação é reconhecida pelo MEC?",
-    a: "Sim. O curso é 100% regulamentado e o diploma é emitido pela Anhanguera, instituição de alta credibilidade com nota máxima no MEC."
+    a: "Sim. O curso é 100% regulamentado e o diploma é emitido pela Anhanguera, instituição de alta credibilidade."
   },
   {
     q: "O curso dá direito ao registro no CREA e extensões de atribuição?",
