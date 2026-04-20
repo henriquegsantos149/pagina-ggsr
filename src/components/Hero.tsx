@@ -23,7 +23,7 @@ export default function Hero() {
           <img 
             src={`${import.meta.env.BASE_URL}logo-crea.png`} 
             alt="Logo CREA" 
-            className="h-16 md:h-20 w-auto object-contain hover:scale-105 transition-transform"
+            className="h-16 md:h-20 w-auto object-contain"
           />
 
           {/* Ambiental Pro */}
@@ -31,12 +31,12 @@ export default function Hero() {
             href="https://www.ambientalpro.com.br/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group"
+            className=""
           >
             <img 
               src={`${import.meta.env.BASE_URL}logo-ambientalpro.png`} 
               alt="Ambiental Pro" 
-              className="h-14 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform"
+              className="h-14 md:h-16 w-auto object-contain"
             />
           </a>
 
@@ -45,12 +45,12 @@ export default function Hero() {
             href="https://emec.mec.gov.br/emec/consulta-cadastro/detalhamento/d96957f455f6405d14c6542552b0f6eb/NTE1/93916316abe23148507bd4c260e4b878/Mjc0OTUy"
             target="_blank"
             rel="noopener noreferrer"
-            className="group"
+            className=""
           >
             <img 
               src={`${import.meta.env.BASE_URL}mec-badge.png`} 
               alt="Selo MEC" 
-              className="h-20 md:h-24 w-auto object-contain group-hover:scale-105 transition-transform"
+              className="h-20 md:h-24 w-auto object-contain"
             />
           </a>
         </motion.div>
