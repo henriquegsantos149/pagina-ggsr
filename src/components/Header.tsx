@@ -9,11 +9,17 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center gap-4">
         {/* Logo */}
         <div className="flex justify-start flex-1">
-          <img 
-            src={`${import.meta.env.BASE_URL}logo.png`} 
-            alt="Pós GGSR Logo" 
-            className="h-14 md:h-20 w-auto object-contain py-1 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-          />
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="cursor-pointer focus:outline-none transition-transform hover:scale-105 active:scale-95"
+            aria-label="Voltar para o topo"
+          >
+            <img 
+              src={`${import.meta.env.BASE_URL}logo.png`} 
+              alt="Pós GGSR Logo" 
+              className="h-14 md:h-20 w-auto object-contain py-1 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+            />
+          </button>
         </div>
         
         {/* Mobile menu button */}

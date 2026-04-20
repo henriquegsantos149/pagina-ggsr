@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 
 export default function StickyCTA() {
-  const checkoutUrl = "https://pay.voompcreators.com.br/4664/offer/9rKDRq/?utm_source=site_anhanguera";
+  const checkoutUrl = "https://pay.voompcreators.com.br/12211";
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 pointer-events-none">
