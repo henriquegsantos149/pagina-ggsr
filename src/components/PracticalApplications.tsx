@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Briefcase, Building2, Landmark, Tractor, HardHat, TreePine } from 'lucide-react';
 
 const apps = [
   {
