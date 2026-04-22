@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
-export default function CallToAction() {
+interface CallToActionProps {
+  onOpenModal: () => void;
+}
+
+export default function CallToAction({ onOpenModal }: CallToActionProps) {
   return (
     <section id="inscreva-se" className="py-16 md:py-24 relative overflow-hidden bg-[var(--color-brand-dark)] border-t border-white/5">
       
@@ -32,19 +36,17 @@ export default function CallToAction() {
           </p>
           
           <div className="relative z-10 space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:gap-6">
-            <a 
-              href="https://pay.voompcreators.com.br/12211" 
-              target="_blank"
-              rel="noopener noreferrer"
+            <button 
+              onClick={onOpenModal}
               aria-label="Inscreva-se agora na Pós-Graduação em Georreferenciamento via Plataforma de Pagamento"
-              className="shape-leaf group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-brand-gradient text-[var(--color-brand-dark)] font-bold text-lg overflow-hidden transition-transform hover:scale-105 active:scale-95 w-full sm:w-auto shadow-[0_0_30px_rgba(39,102,140,0.4)]"
+              className="shape-leaf group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-brand-gradient text-[var(--color-brand-dark)] font-bold text-lg overflow-hidden transition-transform hover:scale-105 active:scale-95 w-full sm:w-auto shadow-[0_0_30px_rgba(39,102,140,0.4)] cursor-pointer"
             >
               <span className="relative z-10 flex items-center gap-2 uppercase tracking-wide font-primary">
                 Inscreva-se Agora
                 <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
               </span>
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
-            </a>
+            </button>
             
             <a 
               href="https://wa.link/68z52x" 

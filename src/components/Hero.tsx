@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
-export default function Hero() {
+interface HeroProps {
+  onOpenModal: () => void;
+}
+
+export default function Hero({ onOpenModal }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black/20">
       {/* Background Elements */}
@@ -85,10 +89,14 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <a href="https://pay.voompcreators.com.br/12211" target="_blank" rel="noopener noreferrer" aria-label="Inscreva-se agora na Pós-Graduação em Georreferenciamento, Geoprocessamento e Sensoriamento Remoto" className="shape-leaf group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-brand-gradient text-[var(--color-brand-dark)] font-bold text-lg overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-[0_0_20px_var(--color-brand-green2)]/30">
+          <button 
+            onClick={onOpenModal}
+            aria-label="Inscreva-se agora na Pós-Graduação em Georreferenciamento, Geoprocessamento e Sensoriamento Remoto" 
+            className="shape-leaf group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-brand-gradient text-[var(--color-brand-dark)] font-bold text-lg overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-[0_0_20px_var(--color-brand-green2)]/30 cursor-pointer"
+          >
             <span className="relative z-10 transition-colors uppercase tracking-wider font-primary">Inscreva-se Agora</span>
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
-          </a>
+          </button>
         </motion.div>
 
         {/* Scroll Indicator */}
