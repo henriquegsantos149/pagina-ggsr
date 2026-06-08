@@ -21,13 +21,13 @@ export default function Hero({ onOpenModal }: HeroProps) {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex flex-wrap items-center justify-center gap-10 md:gap-16 mb-8 md:mb-12"
+          className="flex flex-wrap items-center justify-center gap-5 sm:gap-10 md:gap-16 mb-8 md:mb-12"
         >
           {/* CREA */}
           <img 
             src={`${import.meta.env.BASE_URL}logo-crea.png`} 
             alt="Logo CREA" 
-            className="h-16 md:h-20 w-auto object-contain"
+            className="h-8 sm:h-12 md:h-20 w-auto object-contain"
           />
 
           {/* Ambiental Pro */}
@@ -40,7 +40,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
             <img 
               src={`${import.meta.env.BASE_URL}logo-ambientalpro.png`} 
               alt="Ambiental Pro" 
-              className="h-14 md:h-16 w-auto object-contain"
+              className="h-7 sm:h-10 md:h-16 w-auto object-contain"
             />
           </a>
 
@@ -54,7 +54,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
             <img 
               src={`${import.meta.env.BASE_URL}mec-badge.png`} 
               alt="Selo MEC" 
-              className="h-20 md:h-24 w-auto object-contain"
+              className="h-10 sm:h-15 md:h-24 w-auto object-contain"
             />
           </a>
         </motion.div>
