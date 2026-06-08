@@ -166,7 +166,7 @@ export default function Faculty() {
                     <img
                       src={member.image}
                       alt={`${member.name} – Professor da Pós-Graduação`}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
+                      className="w-full h-full object-cover grayscale-0 md:grayscale group-hover:grayscale-0 opacity-100 md:opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
                     />
                   </div>
 
