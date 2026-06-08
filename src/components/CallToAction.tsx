@@ -7,7 +7,7 @@ interface CallToActionProps {
 
 export default function CallToAction({ onOpenModal }: CallToActionProps) {
   return (
-    <section id="inscreva-se" className="py-16 md:py-24 relative overflow-hidden bg-[var(--color-brand-dark)] border-t border-white/5">
+    <section id="inscreva-se" className="py-16 md:py-24 relative overflow-hidden bg-[var(--color-brand-dark)]">
       
       {/* Background radial gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(41,131,166,0.15)_0%,rgba(10,13,26,1)_70%)] pointer-events-none"></div>
