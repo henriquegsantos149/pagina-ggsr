@@ -10,7 +10,7 @@ export default function CallToAction({ onOpenModal }: CallToActionProps) {
     <section id="inscreva-se" className="py-16 md:py-24 relative overflow-hidden bg-[var(--color-brand-dark)] border-t border-white/5">
       
       {/* Background radial gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(41,131,166,0.15)_0%,rgba(38,42,64,1)_70%)] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(41,131,166,0.15)_0%,rgba(10,13,26,1)_70%)] pointer-events-none"></div>
 
       <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
         
