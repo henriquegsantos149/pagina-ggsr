@@ -17,10 +17,10 @@ export default function ProblemObjective() {
               <AlertCircle className="w-5 h-5" />
               <span>O Desafio do Mercado</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-8 font-primary uppercase leading-tight">
-              A lacuna técnica no <span className="text-brand-gradient">Georreferenciamento</span>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-8 font-primary uppercase leading-tight break-words">
+              A lacuna técnica no <span className="text-brand-gradient-dark">Georreferenciamento</span>
             </h2>
-            <div className="space-y-6 text-lg text-[var(--color-brand-dark)]/70 font-secondary">
+            <div className="space-y-6 text-lg text-[var(--color-brand-dark)]/85 font-secondary">
               <p>
                 O mercado de inspeção e demarcação de terras no Brasil vive uma contradição: alta demanda por serviços de precisão e escassez de profissionais que dominam a fundo as novas normas do INCRA e CONFEA.
               </p>
