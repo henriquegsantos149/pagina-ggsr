@@ -25,8 +25,9 @@ export default function Hero({ onOpenModal }: HeroProps) {
         >
           {/* CREA */}
           <img 
-            src={`${import.meta.env.BASE_URL}logo-crea.png`} 
+            src={`${import.meta.env.BASE_URL}logo-crea.webp`} 
             alt="Logo CREA" 
+            fetchPriority="high"
             className="h-8 sm:h-12 md:h-20 w-auto object-contain"
           />
 
@@ -38,7 +39,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
             className=""
           >
             <img 
-              src={`${import.meta.env.BASE_URL}logo-ambientalpro.png`} 
+              src={`${import.meta.env.BASE_URL}logo-ambientalpro.webp`} 
               alt="Ambiental Pro" 
               className="h-7 sm:h-10 md:h-16 w-auto object-contain"
             />
@@ -52,7 +53,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
             className=""
           >
             <img 
-              src={`${import.meta.env.BASE_URL}mec-badge.png`} 
+              src={`${import.meta.env.BASE_URL}mec-badge.webp`} 
               alt="Selo MEC" 
               className="h-10 sm:h-15 md:h-24 w-auto object-contain"
             />

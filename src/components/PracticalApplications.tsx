@@ -2,32 +2,32 @@ import { motion } from 'framer-motion';
 
 const apps = [
   {
-    image: "app-agronegocio.png",
+    image: "app-agronegocio.webp",
     title: "Agronegócio",
     desc: "Monitoramento de safras, gestão de limites rurais e agricultura de precisão."
   },
   {
-    image: "app-meio-ambiente.png",
+    image: "app-meio-ambiente.webp",
     title: "Meio Ambiente",
     desc: "Análise de impacto ambiental, recuperação de áreas degradadas e monitoramento florestal."
   },
   {
-    image: "app-gestao-publica.png",
+    image: "app-gestao-publica.webp",
     title: "Gestão Pública",
     desc: "Plano diretor, cadastro técnico multifinalitário e regularização fundiária."
   },
   {
-    image: "app-construcao-civil.png",
+    image: "app-construcao-civil.webp",
     title: "Construção Civil",
     desc: "Levantamentos topográficos de precisão e acompanhamento de grandes obras de infraestrutura."
   },
   {
-    image: "app-mercado-imobiliario.png",
+    image: "app-mercado-imobiliario.webp",
     title: "Mercado Imobiliário",
     desc: "Avaliação de áreas para empreendimentos e perícias judiciais de demarcação."
   },
   {
-    image: "app-consultoria.png",
+    image: "app-consultoria.webp",
     title: "Consultoria Autônoma",
     desc: "Liberdade para gerir seus próprios projetos e emitir laudos certificados pelo CREA."
   }
@@ -63,6 +63,7 @@ export default function PracticalApplications() {
                 <img 
                   src={`${import.meta.env.BASE_URL}practical-apps/${app.image}`} 
                   alt={app.title}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>

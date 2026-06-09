@@ -7,49 +7,49 @@ const facultyMembers = [
   {
     name: "Henrique Gonzalez",
     title: "Engenheiro Ambiental (UFRJ)",
-    image: `${base}faculty/henrique.png`,
+    image: `${base}faculty/henrique.webp`,
     resume: "Experiência sólida na área ambiental, focado em geoprocessamento e soluções tecnológicas."
   },
   {
     name: "Raquel Carnivalle Melillo",
     title: "Doutora em Ambiente e Sociedade (UNICAMP)",
-    image: `${base}faculty/raquel.png`,
+    image: `${base}faculty/raquel.webp`,
     resume: "Pesquisadora com vasta contribuição para estudos de impacto ambiental e sustentabilidade."
   },
   {
     name: "Rodolfo Finatti",
     title: "Geógrafo (UNESP), PhD em Geografia (USP)",
-    image: `${base}faculty/rodolfo.png`,
+    image: `${base}faculty/rodolfo.webp`,
     resume: "Especialista com profunda bagagem acadêmica e prática na formulação de mapas."
   },
   {
     name: "Vitor do Sacramento",
     title: "Geólogo (UNB) com MBA",
-    image: `${base}faculty/vitor.png`,
+    image: `${base}faculty/vitor.webp`,
     resume: "Combina conhecimento profundo do solo com gestão estratégica em geotecnologias."
   },
   {
     name: "Luís Antônio Soares",
     title: "Engenheiro Agrimensor (UFU)",
-    image: `${base}faculty/luis.png`,
+    image: `${base}faculty/luis.webp`,
     resume: "Experiência de campo em demarcações e georreferenciamento de imóveis rurais."
   },
   {
     name: "Ana Beatriz Ulhoa",
     title: "Engenheira Ambiental",
-    image: `${base}faculty/ana.png`,
+    image: `${base}faculty/ana.webp`,
     resume: "Focada em análises geoespaciais voltadas para a sustentabilidade e impacto urbano."
   },
   {
     name: "Charlie Turette Lopes",
     title: "Engenheiro de Produção",
-    image: `${base}faculty/charlie.png`,
+    image: `${base}faculty/charlie.webp`,
     resume: "Especialista em otimização de processos usando tecnologias de sensoriamento remoto."
   },
   {
     name: "Bismarck Feuchard",
     title: "Eng. Civil (INCRA)",
-    image: `${base}faculty/bismarck.png`,
+    image: `${base}faculty/bismarck.webp`,
     resume: "Expertise de ponta na legislação e requisitos técnicos do INCRA."
   }
 ];
@@ -166,6 +166,7 @@ export default function Faculty() {
                     <img
                       src={member.image}
                       alt={`${member.name} – Professor da Pós-Graduação`}
+                      loading="lazy"
                       className="w-full h-full object-cover grayscale-0 md:grayscale group-hover:grayscale-0 opacity-100 md:opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
                     />
                   </div>

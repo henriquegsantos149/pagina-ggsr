@@ -15,7 +15,7 @@ export default function Header() {
             aria-label="Voltar para o topo"
           >
             <img 
-              src={`${import.meta.env.BASE_URL}logo.png`} 
+              src={`${import.meta.env.BASE_URL}logo.webp`} 
               alt="Pós GGSR Logo" 
               className="h-10 md:h-14 w-auto object-contain py-1 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
             />

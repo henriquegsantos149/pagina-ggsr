@@ -73,8 +73,9 @@ export default function CourseInfo() {
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-brand-gradient opacity-10 rounded-full blur-[40px] group-hover:opacity-30 transition-opacity"></div>
             <img
-              src={`${import.meta.env.BASE_URL}mec-badge.png`}
+              src={`${import.meta.env.BASE_URL}mec-badge.webp`}
               alt="Selo MEC"
+              loading="lazy"
               className="h-20 w-auto object-contain mb-3 group-hover:scale-105 transition-transform"
             />
             <h3 className="text-lg font-bold text-[var(--color-brand-primary)] uppercase tracking-wider">Nota 5 no MEC</h3>
@@ -116,8 +117,9 @@ export default function CourseInfo() {
               {/* CREA */}
               <div className="flex flex-col items-center gap-2">
                 <img
-                  src={`${import.meta.env.BASE_URL}logo-crea.png`}
+                  src={`${import.meta.env.BASE_URL}logo-crea.webp`}
                   alt="Logo CREA"
+                  loading="lazy"
                   className="h-12 md:h-14 lg:h-16 w-auto object-contain"
                 />
                 <span className="text-[10px] sm:text-xs text-[var(--color-brand-dark)]/60 uppercase tracking-wider">CREA/CONFEA</span>
@@ -126,8 +128,9 @@ export default function CourseInfo() {
               {/* Anhanguera */}
               <div className="flex flex-col items-center gap-2">
                 <img
-                  src={`${import.meta.env.BASE_URL}logo-anhanguera.png`}
+                  src={`${import.meta.env.BASE_URL}logo-anhanguera.webp`}
                   alt="Logo Anhanguera"
+                  loading="lazy"
                   className="h-16 md:h-20 lg:h-24 w-auto object-contain"
                 />
               </div>

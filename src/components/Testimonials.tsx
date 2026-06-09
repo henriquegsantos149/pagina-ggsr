@@ -5,13 +5,13 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const base = import.meta.env.BASE_URL;
 
 const testimonials = [
-  { img: `${base}testimonials/testi1.jpg`, alt: "Depoimento Luciana Souza" },
-  { img: `${base}testimonials/testi2.jpg`, alt: "Depoimento Thiago Martins" },
-  { img: `${base}testimonials/testi3.png`, alt: "Depoimento Aluno" },
-  { img: `${base}testimonials/testi4.png`, alt: "Depoimento Rafael" },
-  { img: `${base}testimonials/testi5.png`, alt: "Depoimento Aluna GGSR" },
-  { img: `${base}testimonials/testi6.png`, alt: "Depoimento Defesa Civil" },
-  { img: `${base}testimonials/testi7.jpg`, alt: "Depoimento Suporte" },
+  { img: `${base}testimonials/testi1.webp`, alt: "Depoimento Luciana Souza" },
+  { img: `${base}testimonials/testi2.webp`, alt: "Depoimento Thiago Martins" },
+  { img: `${base}testimonials/testi3.webp`, alt: "Depoimento Aluno" },
+  { img: `${base}testimonials/testi4.webp`, alt: "Depoimento Rafael" },
+  { img: `${base}testimonials/testi5.webp`, alt: "Depoimento Aluna GGSR" },
+  { img: `${base}testimonials/testi6.webp`, alt: "Depoimento Defesa Civil" },
+  { img: `${base}testimonials/testi7.webp`, alt: "Depoimento Suporte" },
 ];
 
 export default function Testimonials() {
@@ -70,7 +70,7 @@ export default function Testimonials() {
               const position = getPosition(index);
               
               if (position === 'hidden') return null;
-
+ 
               return (
                 <motion.div
                   key={index}
@@ -89,6 +89,7 @@ export default function Testimonials() {
                     <img 
                       src={testi.img} 
                       alt={testi.alt} 
+                      loading="lazy"
                       className="w-full h-auto rounded-lg"
                     />
                   </div>
