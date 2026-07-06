@@ -3,9 +3,10 @@ import { ArrowRight } from 'lucide-react';
 
 interface CallToActionProps {
   onOpenModal: () => void;
+  isWaitingList?: boolean;
 }
 
-export default function CallToAction({ onOpenModal }: CallToActionProps) {
+export default function CallToAction({ onOpenModal, isWaitingList = false }: CallToActionProps) {
   return (
     <section id="inscreva-se" className="py-16 md:py-24 relative overflow-hidden bg-[var(--color-brand-dark)]">
       
@@ -32,17 +33,19 @@ export default function CallToAction({ onOpenModal }: CallToActionProps) {
           </h2>
           
           <p className="text-xl text-[var(--color-brand-light)]/70 mb-12 max-w-3xl mx-auto relative z-10 font-secondary mt-6">
-            Junte-se à próxima turma e torne-se um especialista certificado apto para atuar em projetos de impacto em Georreferenciamento e Geoprocessamento.
+            {isWaitingList
+              ? 'Entre na lista de espera e garanta prioridade na abertura de novas vagas para a Pós GGSR.'
+              : 'Junte-se à próxima turma e torne-se um especialista certificado apto para atuar em projetos de impacto em Georreferenciamento e Geoprocessamento.'}
           </p>
           
           <div className="relative z-10 space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:gap-6">
             <button 
               onClick={onOpenModal}
-              aria-label="Inscreva-se agora na Pós-Graduação em Georreferenciamento via Plataforma de Pagamento"
+              aria-label={isWaitingList ? "Entrar na Lista de Espera" : "Inscreva-se agora na Pós-Graduação em Georreferenciamento via Plataforma de Pagamento"}
               className="shape-leaf group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-brand-gradient text-[var(--color-brand-dark)] font-bold text-lg overflow-hidden transition-transform hover:scale-105 active:scale-95 w-full sm:w-auto shadow-[0_0_30px_rgba(39,102,140,0.4)] cursor-pointer"
             >
               <span className="relative z-10 flex items-center gap-2 uppercase tracking-wide font-primary">
-                Inscreva-se Agora
+                {isWaitingList ? 'Quero me inscrever' : 'Inscreva-se Agora'}
                 <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
               </span>
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>

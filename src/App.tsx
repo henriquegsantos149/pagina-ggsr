@@ -12,18 +12,29 @@ import FAQ from './components/FAQ'
 import CallToAction from './components/CallToAction'
 import StickyCTA from './components/StickyCTA'
 import LeadCaptureModal from './components/LeadCaptureModal'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isWaitingList, setIsWaitingList] = useState(false);
   const checkoutUrl = "https://pay.voompcreators.com.br/12211";
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isWaiting = window.location.pathname.includes('/lista-de-espera');
+      setIsWaitingList(isWaiting);
+      if (isWaiting) {
+        document.title = "Lista de Espera | Pós-Graduação em Georreferenciamento, Geoprocessamento e Sensoriamento Remoto";
+      }
+    }
+  }, []);
 
   const openModal = () => setIsModalOpen(true);
 
   return (
     <main className="w-full min-h-screen bg-[var(--color-brand-dark)] text-[var(--color-brand-light)] font-secondary selection:bg-[var(--color-brand-primary)] selection:text-[var(--color-brand-dark)]">
       <Header />
-      <Hero onOpenModal={openModal} />
+      <Hero onOpenModal={openModal} isWaitingList={isWaitingList} />
       <ProblemObjective />
       <Curriculum />
       <SkillsResults />
@@ -33,14 +44,15 @@ function App() {
       <CourseInfo />
       <Testimonials />
       <FAQ />
-      <CallToAction onOpenModal={openModal} />
+      <CallToAction onOpenModal={openModal} isWaitingList={isWaitingList} />
       
-      <StickyCTA onOpenModal={openModal} />
+      <StickyCTA onOpenModal={openModal} isWaitingList={isWaitingList} />
 
       <LeadCaptureModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
         checkoutUrl={checkoutUrl}
+        isWaitingList={isWaitingList}
       />
       
       <footer className="bg-black/60 border-t border-white/5 py-10 text-center text-[var(--color-brand-light)]/40 text-sm">

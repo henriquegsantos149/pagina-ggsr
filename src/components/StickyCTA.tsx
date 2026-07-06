@@ -4,9 +4,10 @@ import { MessageCircle } from 'lucide-react';
 
 interface StickyCTAProps {
   onOpenModal: () => void;
+  isWaitingList?: boolean;
 }
 
-export default function StickyCTA({ onOpenModal }: StickyCTAProps) {
+export default function StickyCTA({ onOpenModal, isWaitingList = false }: StickyCTAProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -46,7 +47,7 @@ export default function StickyCTA({ onOpenModal }: StickyCTAProps) {
         <div className="relative z-10 flex items-center gap-2 md:gap-3">
           <MessageCircle className="w-5 h-5 md:w-6 md:h-6 animate-pulse" />
           <span className="font-primary font-extrabold uppercase tracking-wider text-sm sm:text-base md:text-lg">
-            Matricule-se Agora
+            {isWaitingList ? 'Quero me inscrever' : 'Matricule-se Agora'}
           </span>
         </div>
 

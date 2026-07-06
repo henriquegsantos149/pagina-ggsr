@@ -3,9 +3,10 @@ import { ChevronDown } from 'lucide-react';
 
 interface HeroProps {
   onOpenModal: () => void;
+  isWaitingList?: boolean;
 }
 
-export default function Hero({ onOpenModal }: HeroProps) {
+export default function Hero({ onOpenModal, isWaitingList = false }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black/20">
       {/* Background Elements */}
@@ -92,10 +93,12 @@ export default function Hero({ onOpenModal }: HeroProps) {
         >
           <button 
             onClick={onOpenModal}
-            aria-label="Inscreva-se agora na Pós-Graduação em Georreferenciamento, Geoprocessamento e Sensoriamento Remoto" 
+            aria-label={isWaitingList ? "Entrar na Lista de Espera da Pós-Graduação em Georreferenciamento" : "Inscreva-se agora na Pós-Graduação em Georreferenciamento, Geoprocessamento e Sensoriamento Remoto"} 
             className="shape-leaf group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-brand-gradient text-[var(--color-brand-dark)] font-bold text-lg overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-[0_0_20px_var(--color-brand-green2)]/30 cursor-pointer"
           >
-            <span className="relative z-10 transition-colors uppercase tracking-wider font-primary">Inscreva-se Agora</span>
+            <span className="relative z-10 transition-colors uppercase tracking-wider font-primary">
+              {isWaitingList ? 'Quero me inscrever' : 'Inscreva-se Agora'}
+            </span>
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
           </button>
         </motion.div>
