@@ -77,7 +77,10 @@ export default function LeadCaptureModal({ isOpen, onClose, checkoutUrl, isWaiti
 
       if (isWaitingList) {
         // Enviar para a API do ActiveCampaign na Vercel (apenas na lista de espera, sem bloquear o fluxo)
-        fetch(window.location.origin + '/api/subscribe', {
+        // Usamos import.meta.env.BASE_URL para respeitar o subdiretório (ex: /posggsr/)
+        const apiUrl = import.meta.env.BASE_URL + 'api/subscribe';
+        
+        fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
