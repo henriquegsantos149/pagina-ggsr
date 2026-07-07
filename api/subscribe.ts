@@ -41,12 +41,14 @@ export default async function handler(req: any, res: any) {
         lastName,
         phone: telefone || '',
         fieldValues: [
-          { field: '244', value: utm_campaign || '' },
-          { field: '245', value: utm_source || '' },
-          { field: '246', value: utm_medium || '' },
-          { field: '251', value: utm_content || '' },
-          { field: '247', value: utm_term || '' },
-          { field: '248', value: new Date().toISOString() }, // Data de inscrição
+          { field: '395', value: utm_campaign || '' },
+          { field: '396', value: utm_source || '' },
+          { field: '397', value: utm_medium || '' },
+          { field: '398', value: utm_content || '' },
+          { field: '399', value: utm_term || '' },
+          { field: '401', value: new Date().toISOString() },
+          { field: '402', value: formacao || '' },
+          { field: '403', value: area || '' }
         ]
       }
     };
