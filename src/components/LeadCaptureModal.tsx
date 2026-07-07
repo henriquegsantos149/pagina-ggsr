@@ -33,23 +33,25 @@ export default function LeadCaptureModal({ isOpen, onClose, checkoutUrl, isWaiti
     setIsSubmitting(true);
 
     try {
-      // Google Apps Script Webhook URL
-      const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyn6jedHtgyEzRVq1l1AjqB6wBAG8pVh6niLEyOd8ttRSLrCj7vcH0idK8LI6Zbgh5Arg/exec';
-      
-      // We use no-cors because Apps Script doesn't support CORS POSTs properly from browsers without a redirect dance, 
-      // but 'no-cors' allows the request to be sent even if we can't read the response.
-      fetch(WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        keepalive: true,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          course: isWaitingList ? 'lista-de-espera-pós-ggsr' : 'pós-ggsr'
-        }),
-      });
+      if (!isWaitingList) {
+        // Google Apps Script Webhook URL
+        const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyn6jedHtgyEzRVq1l1AjqB6wBAG8pVh6niLEyOd8ttRSLrCj7vcH0idK8LI6Zbgh5Arg/exec';
+        
+        // We use no-cors because Apps Script doesn't support CORS POSTs properly from browsers without a redirect dance, 
+        // but 'no-cors' allows the request to be sent even if we can't read the response.
+        fetch(WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          keepalive: true,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...formData,
+            course: 'pós-ggsr'
+          }),
+        });
+      }
 
       if (isWaitingList) {
         setIsSubmitting(false);
