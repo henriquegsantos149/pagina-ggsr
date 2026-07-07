@@ -32,6 +32,28 @@ export default function LeadCaptureModal({ isOpen, onClose, checkoutUrl, isWaiti
 
     setIsSubmitting(true);
 
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // Função helper para buscar UTM (padrão ou variação que contenha a palavra)
+    const getUtmParam = (base: string) => {
+      if (urlParams.has(base)) return urlParams.get(base);
+      
+      for (const [key, value] of urlParams.entries()) {
+        if (key.toLowerCase().includes(base)) {
+          return value;
+        }
+      }
+      return '';
+    };
+
+    const utmParams = {
+      utm_source: getUtmParam('utm_source'),
+      utm_medium: getUtmParam('utm_medium'),
+      utm_campaign: getUtmParam('utm_campaign'),
+      utm_term: getUtmParam('utm_term'),
+      utm_content: getUtmParam('utm_content'),
+    };
+
     try {
       if (!isWaitingList) {
         // Google Apps Script Webhook URL
@@ -54,6 +76,18 @@ export default function LeadCaptureModal({ isOpen, onClose, checkoutUrl, isWaiti
       }
 
       if (isWaitingList) {
+        // Enviar para a API do ActiveCampaign na Vercel (apenas na lista de espera, sem bloquear o fluxo)
+        fetch(window.location.origin + '/api/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...formData,
+            ...utmParams
+          }),
+        }).catch(err => console.error('Erro silencioso API ActiveCampaign:', err));
+
         setIsSubmitting(false);
         setIsSubmitted(true);
       } else {
