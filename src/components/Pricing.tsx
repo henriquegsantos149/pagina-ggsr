@@ -80,7 +80,7 @@ export default function Pricing({ onOpenModal, isWaitingList = false }: PricingP
                     12x de
                   </span>
                   <span className="text-5xl md:text-6xl font-black font-impact tracking-wider text-brand-gradient">
-                    R$ 797,01
+                    R$ 797,00
                   </span>
                   <span className="text-[var(--color-brand-dark)]/60 text-sm block mt-2 font-secondary">
                     ou R$ 7.970,00 à vista
