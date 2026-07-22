@@ -34,7 +34,7 @@ export default function CallToAction({ onOpenModal, isWaitingList = false }: Cal
           
           <p className="text-xl text-[var(--color-brand-light)]/70 mb-12 max-w-3xl mx-auto relative z-10 font-secondary mt-6">
             {isWaitingList
-              ? 'Entre na lista de espera e garanta prioridade na abertura de novas vagas para a Pós GGSR.'
+              ? 'Entre na lista de espera para garantir prioridade na abertura de novas vagas da Pós GGSR e receber um desconto exclusivo.'
               : 'Junte-se à próxima turma e torne-se um especialista certificado apto para atuar em projetos de impacto em Georreferenciamento e Geoprocessamento.'}
           </p>
           

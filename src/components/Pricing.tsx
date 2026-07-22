@@ -88,11 +88,17 @@ export default function Pricing({ onOpenModal, isWaitingList = false }: PricingP
                 </div>
 
                 <div className="border-t border-slate-200/80 pt-6 mb-8">
-                  <p className="text-[var(--color-brand-dark)]/80 font-secondary text-sm leading-relaxed">
-                    {isWaitingList 
-                      ? 'Entre na lista de espera para garantir sua vaga e ser avisado assim que as matrículas para a nova turma abrirem com condições promocionais.' 
-                      : 'Aproveite as condições facilitadas para garantir sua vaga na pós-graduação e iniciar imediatamente.'}
-                  </p>
+                  {isWaitingList ? (
+                    <div className="bg-[var(--color-brand-primary)]/10 border border-[var(--color-brand-primary)]/30 rounded-lg p-4 shadow-inner">
+                      <p className="text-[var(--color-brand-dark)] font-primary font-bold text-base leading-relaxed text-left uppercase tracking-wide">
+                        Entre na lista de espera para garantir sua vaga e um <span className="text-[var(--color-brand-primary)]">desconto exclusivo</span>.
+                      </p>
+                    </div>
+                  ) : (
+                    <p className="text-[var(--color-brand-dark)]/80 font-secondary text-sm leading-relaxed">
+                      Aproveite as condições facilitadas para garantir sua vaga na pós-graduação e iniciar imediatamente.
+                    </p>
+                  )}
                 </div>
               </div>
 

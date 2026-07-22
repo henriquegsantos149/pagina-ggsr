@@ -168,11 +168,17 @@ export default function LeadCaptureModal({ isOpen, onClose, checkoutUrl, isWaiti
                 <h3 className="text-2xl md:text-3xl font-bold mb-2 font-primary text-white uppercase tracking-tight">
                   {isWaitingList ? 'Lista de Espera' : 'Falta pouco!'}
                 </h3>
-                <p className="text-[var(--color-brand-light)]/60 mb-8 font-secondary text-sm md:text-base">
-                  {isWaitingList
-                    ? 'Preencha os dados abaixo para garantir sua vaga na lista de espera da próxima turma da Pós GGSR.'
-                    : 'Preencha os dados abaixo para continuar sua inscrição na Pós GGSR.'}
-                </p>
+                {isWaitingList ? (
+                  <div className="bg-[var(--color-brand-primary)]/10 border border-[var(--color-brand-primary)]/30 rounded-lg p-4 mb-8 shadow-inner">
+                    <p className="text-white font-primary font-bold text-sm md:text-base leading-relaxed text-left">
+                      Preencha os dados abaixo para entrar na lista de espera da Pós GGSR e garantir um <span className="text-[var(--color-brand-primary)]">desconto exclusivo</span>.
+                    </p>
+                  </div>
+                ) : (
+                  <p className="text-[var(--color-brand-light)]/60 mb-8 font-secondary text-sm md:text-base">
+                    Preencha os dados abaixo para continuar sua inscrição na Pós GGSR.
+                  </p>
+                )}
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
