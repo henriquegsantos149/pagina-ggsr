@@ -76,6 +76,18 @@ export default function LeadCaptureModal({ isOpen, onClose, checkoutUrl, isWaiti
       }
 
       if (isWaitingList) {
+        // Disparar evento de lead_qualificado se o usuário tiver formação
+        if (formData.formacao.toLowerCase() === 'sim') {
+          if (typeof window !== 'undefined') {
+            if ((window as any).dataLayer) {
+              (window as any).dataLayer.push({ event: 'lead_qualificado' });
+            }
+            if ((window as any).fbq) {
+              (window as any).fbq('trackCustom', 'lead_qualificado');
+            }
+          }
+        }
+
         // Enviar para a API do ActiveCampaign na Vercel (apenas na lista de espera, sem bloquear o fluxo)
         // Usamos import.meta.env.BASE_URL para respeitar o subdiretório (ex: /posggsr/)
         const apiUrl = import.meta.env.BASE_URL + 'api/subscribe';
