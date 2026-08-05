@@ -52,7 +52,7 @@ export default function CallToAction({ onOpenModal, isWaitingList = false }: Cal
             </button>
             
             <a 
-              href="https://wa.link/68z52x" 
+              href="https://api.whatsapp.com/send/?phone=5521982639824&text=Ol%C3%A1!%20Tenho%20interesse%20na%20P%C3%B3s-Gradua%C3%A7%C3%A3o%20em%20Georreferenciamento%2C%20Geoprocessamento%20e%20Sensoriamento%20Remoto.&type=phone_number&app_absent=0" 
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Falar com um consultor via WhatsApp"
