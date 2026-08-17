@@ -114,6 +114,31 @@ export function clientIpFromHeader(value: unknown): string | undefined {
   return first && first.length > 0 ? first : undefined
 }
 
+export const ALLOWED_ORIGIN_PREFIX = 'https://www.ambientalpro.com.br/posggsr/'
+
+const ALLOWED_CUSTOM_DATA_KEYS = ['content_name', 'content_category'] as const
+
+export function filterCustomData(
+  value: unknown,
+): Record<string, unknown> | undefined {
+  if (value === null || typeof value !== 'object') return undefined
+
+  const source = value as Record<string, unknown>
+  const filtered: Record<string, unknown> = {}
+
+  for (const key of ALLOWED_CUSTOM_DATA_KEYS) {
+    const candidate = source[key]
+    if (typeof candidate === 'string') filtered[key] = candidate
+  }
+
+  return Object.keys(filtered).length > 0 ? filtered : undefined
+}
+
+export function filterEventSourceUrl(value: unknown): string | undefined {
+  if (typeof value !== 'string') return undefined
+  return value.startsWith(ALLOWED_ORIGIN_PREFIX) ? value : undefined
+}
+
 export interface BuildEventPayloadInput {
   eventName: AllowedEvent
   eventId: string

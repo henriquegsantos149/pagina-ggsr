@@ -4,6 +4,8 @@ import {
   buildEventPayload,
   buildUserData,
   clientIpFromHeader,
+  filterCustomData,
+  filterEventSourceUrl,
   isAllowedEvent,
   normalizeEmail,
   normalizeName,
@@ -161,6 +163,47 @@ describe('buildUserData', () => {
   it('omite as chaves ausentes em vez de mandar vazio', () => {
     const userData = buildUserData({})
     expect(userData).toEqual({})
+  })
+})
+
+describe('filterCustomData', () => {
+  it('descarta chaves fora do allowlist', () => {
+    expect(
+      filterCustomData({ content_name: 'Pós GGSR', evil_key: 'payload' }),
+    ).toEqual({ content_name: 'Pós GGSR' })
+  })
+
+  it('descarta valores que nao sao string', () => {
+    expect(filterCustomData({ content_name: 123 })).toBeUndefined()
+  })
+
+  it('omite custom_data quando nada sobrevive ao filtro', () => {
+    expect(filterCustomData({ evil_key: 'payload' })).toBeUndefined()
+    expect(filterCustomData({})).toBeUndefined()
+    expect(filterCustomData(undefined)).toBeUndefined()
+    expect(filterCustomData(null)).toBeUndefined()
+  })
+
+  it('mantem content_name e content_category quando validos', () => {
+    expect(
+      filterCustomData({ content_name: 'Pós GGSR', content_category: 'lista-de-espera' }),
+    ).toEqual({ content_name: 'Pós GGSR', content_category: 'lista-de-espera' })
+  })
+})
+
+describe('filterEventSourceUrl', () => {
+  it('mantem url que bate com a origem permitida', () => {
+    const url = 'https://www.ambientalpro.com.br/posggsr/lista-de-espera'
+    expect(filterEventSourceUrl(url)).toBe(url)
+  })
+
+  it('descarta url de origem estranha', () => {
+    expect(filterEventSourceUrl('https://evil.example.com/posggsr/x')).toBeUndefined()
+  })
+
+  it('descarta valores que nao sao string', () => {
+    expect(filterEventSourceUrl(undefined)).toBeUndefined()
+    expect(filterEventSourceUrl(42)).toBeUndefined()
   })
 })
 

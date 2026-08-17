@@ -3,6 +3,8 @@ import {
   buildEventPayload,
   buildUserData,
   clientIpFromHeader,
+  filterCustomData,
+  filterEventSourceUrl,
   isAllowedEvent,
   parseCookies,
 } from './_lib/capi'
@@ -33,7 +35,13 @@ export default async function handler(req: CapiRequest, res: CapiResponse) {
     return res.status(500).json({ error: 'Not configured' })
   }
 
-  const body = (req.body ?? {}) as Record<string, unknown>
+  let body: Record<string, unknown>
+  try {
+    body = (req.body ?? {}) as Record<string, unknown>
+  } catch {
+    console.error('Meta CAPI: malformed request body')
+    return res.status(400).json({ error: 'Malformed request body' })
+  }
 
   const eventName = body.event_name
   if (!isAllowedEvent(eventName)) {
@@ -55,19 +63,15 @@ export default async function handler(req: CapiRequest, res: CapiResponse) {
     eventId,
     eventTime: Math.floor(Date.now() / 1000),
     accessToken,
-    eventSourceUrl:
-      typeof body.event_source_url === 'string' ? body.event_source_url : undefined,
-    customData:
-      body.custom_data !== null && typeof body.custom_data === 'object'
-        ? (body.custom_data as Record<string, unknown>)
-        : undefined,
+    eventSourceUrl: filterEventSourceUrl(body.event_source_url),
+    customData: filterCustomData(body.custom_data),
     testEventCode: process.env.META_TEST_EVENT_CODE || undefined,
     userData: buildUserData({
       email: body.email,
       telefone: body.telefone,
       nome: body.nome,
-      fbp: cookies._fbp ?? (typeof body.fbp === 'string' ? body.fbp : undefined),
-      fbc: cookies._fbc ?? (typeof body.fbc === 'string' ? body.fbc : undefined),
+      fbp: cookies._fbp || (typeof body.fbp === 'string' ? body.fbp : undefined),
+      fbc: cookies._fbc || (typeof body.fbc === 'string' ? body.fbc : undefined),
       clientIpAddress: clientIpFromHeader(req.headers['x-forwarded-for']),
       clientUserAgent: typeof userAgent === 'string' ? userAgent : undefined,
     }),

@@ -49,12 +49,17 @@ export function trackMeta(eventName: string, options: TrackMetaOptions = {}): vo
   if (typeof window === 'undefined') return
 
   try {
-    const eventId = window.crypto.randomUUID()
+    const eventId =
+      window.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`
     const method = (STANDARD_EVENTS as readonly string[]).includes(eventName)
       ? 'track'
       : 'trackCustom'
 
-    window.fbq?.(method, eventName, options.customData, { eventID: eventId })
+    try {
+      window.fbq?.(method, eventName, options.customData, { eventID: eventId })
+    } catch {
+      /* pixel quebrado nao pode derrubar a chamada da CAPI */
+    }
 
     const cookieString = typeof document === 'undefined' ? '' : document.cookie
 

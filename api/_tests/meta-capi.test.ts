@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import handler from './meta-capi'
-import { sha256 } from './_lib/capi'
+import handler from '../meta-capi'
+import { sha256 } from '../_lib/capi'
 
 interface FakeResponse {
   statusCode?: number
@@ -161,6 +161,20 @@ describe('handler', () => {
     expect(event.user_data.fbp).toBe('fb.1.999.999')
   })
 
+  it('cai para o fbp do corpo quando o cookie _fbp chega vazio', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(okResponse)
+    vi.stubGlobal('fetch', fetchMock)
+    await handler(
+      createRequest({
+        headers: { cookie: '_fbp=; outro=x', 'user-agent': 'Mozilla/5.0' },
+        body: { event_name: 'Lead', event_id: 'e-1', fbp: 'fb.1.999.999' },
+      }),
+      createResponse(),
+    )
+    const event = JSON.parse(fetchMock.mock.calls[0][1].body).data[0]
+    expect(event.user_data.fbp).toBe('fb.1.999.999')
+  })
+
   it('responde 204 mesmo quando o Meta recusa o evento', async () => {
     vi.stubGlobal(
       'fetch',
@@ -192,5 +206,37 @@ describe('handler', () => {
       createResponse(),
     )
     expect(JSON.stringify(errorSpy.mock.calls)).not.toContain('maria@example.com')
+  })
+
+  it('inclui test_event_code no payload quando a env var esta definida', async () => {
+    vi.stubEnv('META_TEST_EVENT_CODE', 'TEST123')
+    const fetchMock = vi.fn().mockResolvedValue(okResponse)
+    vi.stubGlobal('fetch', fetchMock)
+    await handler(createRequest(), createResponse())
+    const payload = JSON.parse(fetchMock.mock.calls[0][1].body)
+    expect(payload.test_event_code).toBe('TEST123')
+  })
+
+  it('omite test_event_code quando a env var nao esta definida', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(okResponse)
+    vi.stubGlobal('fetch', fetchMock)
+    await handler(createRequest(), createResponse())
+    const payload = JSON.parse(fetchMock.mock.calls[0][1].body)
+    expect(payload.test_event_code).toBeUndefined()
+  })
+
+  it('responde 400 quando o corpo da requisicao e JSON malformado', async () => {
+    const fetchMock = vi.fn()
+    vi.stubGlobal('fetch', fetchMock)
+    const res = createResponse()
+    const req = createRequest()
+    Object.defineProperty(req, 'body', {
+      get() {
+        throw new SyntaxError('Unexpected token in JSON')
+      },
+    })
+    await handler(req, res)
+    expect(res.statusCode).toBe(400)
+    expect(fetchMock).not.toHaveBeenCalled()
   })
 })

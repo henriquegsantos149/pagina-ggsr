@@ -53,4 +53,21 @@ describe('trackMeta', () => {
 
     expect(() => trackMeta('Lead')).not.toThrow()
   })
+
+  it('chama a Conversions API mesmo quando o fbq lanca', () => {
+    vi.stubGlobal('window', {
+      crypto: { randomUUID: () => 'id-1' },
+      location: { href: 'https://example.com/', search: '' },
+      fbq: () => {
+        throw new Error('pixel quebrado')
+      },
+    })
+    vi.stubGlobal('document', { cookie: '' })
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true })
+    vi.stubGlobal('fetch', fetchMock)
+
+    trackMeta('Lead')
+
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+  })
 })

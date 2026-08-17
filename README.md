@@ -71,3 +71,11 @@ export default defineConfig([
   },
 ])
 ```
+
+## Meta Conversions API
+
+Server-side event tracking lives at `api/meta-capi.ts` (helpers in `api/_lib/capi.ts`), called from `src/lib/meta.ts` alongside the browser pixel and deduplicated by a shared `event_id`. It reads three environment variables, set in the Vercel project settings:
+
+- `META_PIXEL_ID` — the Meta Pixel ID events are sent to.
+- `META_CAPI_ACCESS_TOKEN` — the Conversions API access token for that pixel.
+- `META_TEST_EVENT_CODE` — optional, routes events to Meta's Test Events tool for validation. **Must be removed after validation** — if left set, every event goes to Test Events and none reaches the live campaign, with no error raised anywhere.
