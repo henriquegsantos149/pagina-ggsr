@@ -1167,7 +1167,7 @@ Run: `npm run build`
 Expected: sucesso.
 
 Run: `npm test`
-Expected: PASS, 46 testes (nenhum teste novo — esta task é integração de UI, coberta na validação da Task 8).
+Expected: PASS, 47 testes (nenhum teste novo — esta task é integração de UI, coberta na validação da Task 8).
 
 - [ ] **Step 5: Commit**
 
@@ -1239,7 +1239,7 @@ Run: `npm run build`
 Expected: sucesso.
 
 Run: `npm test`
-Expected: PASS, 46 testes.
+Expected: PASS, 47 testes.
 
 - [ ] **Step 4: Commit**
 
@@ -1362,7 +1362,7 @@ Run: `npm run lint`
 Expected: os mesmos 3 erros de `api/subscribe.ts`.
 
 Run: `npm test`
-Expected: PASS, 46 testes.
+Expected: PASS, 47 testes.
 
 - [ ] **Step 8: Commit**
 
