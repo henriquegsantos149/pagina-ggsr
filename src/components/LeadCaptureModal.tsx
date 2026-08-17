@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, Loader2, Check } from 'lucide-react';
 import { useState } from 'react';
+import { trackMeta } from '../lib/meta';
 
 interface LeadCaptureModalProps {
   isOpen: boolean;
@@ -76,16 +77,25 @@ export default function LeadCaptureModal({ isOpen, onClose, checkoutUrl, isWaiti
       }
 
       if (isWaitingList) {
-        // Disparar evento de lead_qualificado se o usuário tiver formação
+        const metaOptions = {
+          customData: {
+            content_name: 'Pós GGSR',
+            content_category: 'lista-de-espera',
+          },
+          userData: {
+            nome: formData.nome,
+            email: formData.email,
+            telefone: formData.telefone,
+          },
+        };
+
+        // Lead para todo submit — antes disso, quem respondia "não" na
+        // formação não gerava evento nenhum.
+        trackMeta('Lead', metaOptions);
+
         if (formData.formacao.toLowerCase() === 'sim') {
-          if (typeof window !== 'undefined') {
-            if ((window as any).dataLayer) {
-              (window as any).dataLayer.push({ event: 'lead_qualificado' });
-            }
-            if ((window as any).fbq) {
-              (window as any).fbq('trackCustom', 'lead_qualificado');
-            }
-          }
+          window.dataLayer?.push({ event: 'lead_qualificado' });
+          trackMeta('lead_qualificado', metaOptions);
         }
 
         // Enviar para a API do ActiveCampaign na Vercel (apenas na lista de espera, sem bloquear o fluxo)
