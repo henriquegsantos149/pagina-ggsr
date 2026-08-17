@@ -431,6 +431,8 @@ describe('buildEventPayload', () => {
     expect(serialized).not.toContain('11999999999')
     expect(serialized).not.toContain('5511999999999')
     expect(serialized).not.toContain('Maria')
+    expect(serialized).not.toContain('maria')
+    expect(serialized).not.toContain('silva')
   })
 })
 ```
