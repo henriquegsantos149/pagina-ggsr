@@ -13,22 +13,33 @@ import FAQ from './components/FAQ'
 import CallToAction from './components/CallToAction'
 import StickyCTA from './components/StickyCTA'
 import LeadCaptureModal from './components/LeadCaptureModal'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { trackMeta } from './lib/meta'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isWaitingList, setIsWaitingList] = useState(false);
+  const isWaitingList =
+    typeof window !== 'undefined' &&
+    window.location.pathname.includes('/lista-de-espera');
+  const viewContentSent = useRef(false);
   const checkoutUrl = "https://pay.voompcreators.com.br/12211";
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const isWaiting = window.location.pathname.includes('/lista-de-espera');
-      setIsWaitingList(isWaiting);
-      if (isWaiting) {
-        document.title = "Lista de Espera | Pós-Graduação em Georreferenciamento, Geoprocessamento e Sensoriamento Remoto";
-      }
+    if (isWaitingList) {
+      document.title = "Lista de Espera | Pós-Graduação em Georreferenciamento, Geoprocessamento e Sensoriamento Remoto";
     }
-  }, []);
+  }, [isWaitingList]);
+
+  useEffect(() => {
+    if (viewContentSent.current) return;
+    viewContentSent.current = true;
+    trackMeta('ViewContent', {
+      customData: {
+        content_name: 'Pós GGSR',
+        content_category: isWaitingList ? 'lista-de-espera' : 'pagina-de-vendas',
+      },
+    });
+  }, [isWaitingList]);
 
   const openModal = () => setIsModalOpen(true);
 
