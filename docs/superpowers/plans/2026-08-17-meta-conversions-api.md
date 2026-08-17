@@ -1190,7 +1190,7 @@ import { useState, useEffect, useRef } from 'react'
 import { trackMeta } from './lib/meta'
 ```
 
-Em seguida, dentro de `function App()`, remova a linha `const [isWaitingList, setIsWaitingList] = useState(false);` e o `useEffect` inteiro das linhas 22-31, substituindo por:
+Em seguida, dentro de `function App()`, remova a linha 20 (`const [isWaitingList, setIsWaitingList] = useState(false);`) e o `useEffect` inteiro das linhas 23-31, substituindo por:
 
 ```tsx
   const isWaitingList =
@@ -1249,7 +1249,7 @@ git commit -m "feat: fire ViewContent on both pages and derive page kind in rend
 A página principal de vendas não tem pixel nem GTM hoje. Sem isso, o `ViewContent` da Task 6 chama a CAPI mas não tem pixel de browser para deduplicar contra, e nenhum outro evento dessa página existe.
 
 **Files:**
-- Modify: `index.html:1-14` (head: scripts e canonical) e `:29-31` (body)
+- Modify: `index.html:12` (canonical), `:6` (ponto de inserção dos scripts no head) e `:31` (a tag `<body>`)
 - Modify: `lista-de-espera/index.html:28-30` (mover o `noscript`)
 
 **Interfaces:**
@@ -1258,7 +1258,7 @@ A página principal de vendas não tem pixel nem GTM hoje. Sem isso, o `ViewCont
 
 - [ ] **Step 1: Corrigir o canonical da página de vendas**
 
-Em `index.html`, linha 14, troque:
+Em `index.html`, linha 12, troque:
 
 ```html
     <link rel="canonical" href="https://posggsr.anhanguera.com/" />
