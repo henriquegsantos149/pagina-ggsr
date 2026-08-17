@@ -48,29 +48,33 @@ export function deriveFbc(
 export function trackMeta(eventName: string, options: TrackMetaOptions = {}): void {
   if (typeof window === 'undefined') return
 
-  const eventId = window.crypto.randomUUID()
-  const method = (STANDARD_EVENTS as readonly string[]).includes(eventName)
-    ? 'track'
-    : 'trackCustom'
+  try {
+    const eventId = window.crypto.randomUUID()
+    const method = (STANDARD_EVENTS as readonly string[]).includes(eventName)
+      ? 'track'
+      : 'trackCustom'
 
-  window.fbq?.(method, eventName, options.customData, { eventID: eventId })
+    window.fbq?.(method, eventName, options.customData, { eventID: eventId })
 
-  const cookieString = typeof document === 'undefined' ? '' : document.cookie
+    const cookieString = typeof document === 'undefined' ? '' : document.cookie
 
-  void fetch(`${import.meta.env.BASE_URL}api/meta-capi`, {
-    method: 'POST',
-    keepalive: true,
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      event_name: eventName,
-      event_id: eventId,
-      event_source_url: window.location.href,
-      fbp: readCookie(cookieString, '_fbp'),
-      fbc: deriveFbc(window.location.search, cookieString, Date.now()),
-      custom_data: options.customData,
-      ...options.userData,
-    }),
-  }).catch(() => {
-    /* silencioso de proposito — o pixel do browser ja disparou */
-  })
+    void fetch(`${import.meta.env.BASE_URL}api/meta-capi`, {
+      method: 'POST',
+      keepalive: true,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        event_name: eventName,
+        event_id: eventId,
+        event_source_url: window.location.href,
+        fbp: readCookie(cookieString, '_fbp'),
+        fbc: deriveFbc(window.location.search, cookieString, Date.now()),
+        custom_data: options.customData,
+        ...options.userData,
+      }),
+    }).catch(() => {
+      /* silencioso de proposito — o pixel do browser ja disparou */
+    })
+  } catch {
+    /* tracking nunca pode afetar o usuario nem o cadastro do lead */
+  }
 }

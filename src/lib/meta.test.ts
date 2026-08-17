@@ -1,5 +1,9 @@
-import { describe, expect, it } from 'vitest'
-import { deriveFbc, readCookie } from './meta'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { deriveFbc, readCookie, trackMeta } from './meta'
+
+afterEach(() => {
+  vi.unstubAllGlobals()
+})
 
 describe('readCookie', () => {
   it('encontra o cookie no meio da lista', () => {
@@ -32,5 +36,21 @@ describe('deriveFbc', () => {
   it('devolve undefined sem cookie e sem fbclid', () => {
     expect(deriveFbc('?utm_source=meta', '', 1)).toBeUndefined()
     expect(deriveFbc('', '', 1)).toBeUndefined()
+  })
+})
+
+describe('trackMeta', () => {
+  it('nao propaga excecao quando o fbq lanca', () => {
+    vi.stubGlobal('window', {
+      crypto: { randomUUID: () => 'id-1' },
+      location: { href: 'https://example.com/', search: '' },
+      fbq: () => {
+        throw new Error('pixel quebrado')
+      },
+    })
+    vi.stubGlobal('document', { cookie: '' })
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: true }))
+
+    expect(() => trackMeta('Lead')).not.toThrow()
   })
 })
