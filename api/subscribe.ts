@@ -67,7 +67,7 @@ export default async function handler(req: any, res: any) {
       throw new Error(`Failed to sync contact: ${errorText}`);
     }
 
-    const syncData = await syncRes.json();
+    const syncData = (await syncRes.json()) as { contact: { id: string } };
     const contactId = syncData.contact.id;
 
     // 2. Adicionar Tag ao Contato: 237 - [PÓS] [GEOPROCESSAMENTO] Interessado
