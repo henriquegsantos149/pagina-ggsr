@@ -31,12 +31,13 @@ function App() {
   }, [isWaitingList]);
 
   useEffect(() => {
+    if (!isWaitingList) return;
     if (viewContentSent.current) return;
     viewContentSent.current = true;
     trackMeta('ViewContent', {
       customData: {
         content_name: 'Pós GGSR',
-        content_category: isWaitingList ? 'lista-de-espera' : 'pagina-de-vendas',
+        content_category: 'lista-de-espera',
       },
     });
   }, [isWaitingList]);
