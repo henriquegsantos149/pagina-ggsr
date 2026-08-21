@@ -70,6 +70,9 @@ function App() {
       />
       
       <footer className="bg-black/60 border-t border-white/5 py-10 text-center text-[var(--color-brand-light)]/40 text-sm">
+        <div className="flex justify-center mb-6">
+          <img src="/logo-ambientalpro.webp" alt="Ambiental Pro" className="h-10 w-auto opacity-50 hover:opacity-100 transition-opacity" />
+        </div>
         <p className="font-secondary tracking-widest uppercase">© {new Date().getFullYear()} Pós-Graduação em GGSR. Todos os direitos reservados.</p>
       </footer>
     </main>
