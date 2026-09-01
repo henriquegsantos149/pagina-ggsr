@@ -12,6 +12,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         'lista-de-espera': resolve(__dirname, 'lista-de-espera/index.html'),
+        'lista-de-esperalp2': resolve(__dirname, 'lista-de-esperalp2/index.html'),
       },
     },
   },

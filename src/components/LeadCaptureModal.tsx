@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, Loader2, Check } from 'lucide-react';
+import { X, Send, Loader2, Check, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { trackMeta } from '../lib/meta';
 
@@ -77,10 +77,11 @@ export default function LeadCaptureModal({ isOpen, onClose, checkoutUrl, isWaiti
       }
 
       if (isWaitingList) {
+        const isLp2 = typeof window !== 'undefined' && window.location.pathname.includes('lista-de-esperalp2');
         const metaOptions = {
           customData: {
             content_name: 'Pós GGSR',
-            content_category: 'lista-de-espera',
+            content_category: isLp2 ? 'lista-de-esperalp2' : 'lista-de-espera',
           },
           userData: {
             nome: formData.nome,
@@ -249,23 +250,27 @@ export default function LeadCaptureModal({ isOpen, onClose, checkoutUrl, isWaiti
                     </div>
                   </div>
 
-                  <div className={`grid grid-cols-1 gap-5 ${formData.formacao === 'sim' ? 'md:grid-cols-2' : ''}`}>
-                    <div>
-                      <label htmlFor="formacao" className="block text-xs font-bold uppercase tracking-widest text-[var(--color-brand-primary)] mb-2 font-primary">
-                        Possui Formação?
-                      </label>
+                  <div>
+                    <label htmlFor="formacao" className="block text-xs font-bold uppercase tracking-widest text-[var(--color-brand-primary)] mb-2 font-primary">
+                      Possui Formação?
+                    </label>
+                    <div className="relative">
                       <select
                         id="formacao"
                         required
                         value={formData.formacao}
                         onChange={(e) => setFormData({ ...formData, formacao: e.target.value, area: e.target.value === 'não' ? '' : formData.area })}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[var(--color-brand-primary)] transition-colors font-secondary appearance-none cursor-pointer"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[var(--color-brand-primary)] transition-colors font-secondary appearance-none pr-10 cursor-pointer"
                       >
-                        <option value="" disabled className="bg-[var(--color-brand-dark)]">Selecione...</option>
-                        <option value="sim" className="bg-[var(--color-brand-dark)]">Sim</option>
-                        <option value="não" className="bg-[var(--color-brand-dark)]">Não</option>
+                        <option value="" disabled className="bg-[var(--color-brand-dark)] text-white/50">Selecione...</option>
+                        <option value="sim" className="bg-[var(--color-brand-dark)] text-white">Sim</option>
+                        <option value="não" className="bg-[var(--color-brand-dark)] text-white">Não</option>
                       </select>
+                      <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-white/50">
+                        <ChevronDown className="w-4 h-4" />
+                      </div>
                     </div>
+                  </div>
                     
                     {formData.formacao === 'sim' && (
                       <motion.div
@@ -286,22 +291,21 @@ export default function LeadCaptureModal({ isOpen, onClose, checkoutUrl, isWaiti
                         />
                       </motion.div>
                     )}
-                  </div>
 
                   <button
                     disabled={isSubmitting}
                     type="submit"
-                    className="w-full bg-brand-gradient text-[var(--color-brand-dark)] font-black uppercase tracking-wider py-4 rounded-lg flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:hover:scale-100 font-primary mt-4 cursor-pointer"
+                    className="w-full bg-brand-gradient text-[var(--color-brand-dark)] font-black uppercase tracking-wider py-5 px-6 text-base md:text-lg rounded-xl flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:hover:scale-100 font-primary mt-6 cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20"
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="w-5 h-5 animate-spin" />
-                        Processando...
+                        <Loader2 className="w-6 h-6 animate-spin" />
+                        <span>Processando...</span>
                       </>
                     ) : (
                       <>
-                        {isWaitingList ? 'Entrar na Lista de Espera' : 'Continuar para Inscrição'}
-                        <Send className="w-5 h-5" />
+                        <span>{isWaitingList ? 'Entrar na Lista de Espera' : 'Continuar para Inscrição'}</span>
+                        <Send className="w-6 h-6" />
                       </>
                     )}
                   </button>

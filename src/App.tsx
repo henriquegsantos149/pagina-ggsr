@@ -13,22 +13,31 @@ import FAQ from './components/FAQ'
 import CallToAction from './components/CallToAction'
 import StickyCTA from './components/StickyCTA'
 import LeadCaptureModal from './components/LeadCaptureModal'
+import ListaDeEsperaLp2 from './pages/ListaDeEsperaLp2'
 import { useState, useEffect, useRef } from 'react'
 import { trackMeta } from './lib/meta'
 
 function App() {
+  const isLp2 =
+    typeof window !== 'undefined' &&
+    window.location.pathname.includes('lista-de-esperalp2');
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isWaitingList =
     typeof window !== 'undefined' &&
-    window.location.pathname.includes('/lista-de-espera');
+    window.location.pathname.includes('lista-de-espera');
   const viewContentSent = useRef(false);
   const checkoutUrl = "https://pay.voompcreators.com.br/12211";
 
   useEffect(() => {
-    if (isWaitingList) {
+    if (isWaitingList || isLp2) {
       document.title = "Lista de Espera | Pós-Graduação em Georreferenciamento, Geoprocessamento e Sensoriamento Remoto";
     }
-  }, [isWaitingList]);
+  }, [isWaitingList, isLp2]);
+
+  if (isLp2) {
+    return <ListaDeEsperaLp2 />;
+  }
 
   useEffect(() => {
     if (!isWaitingList) return;
@@ -37,10 +46,10 @@ function App() {
     trackMeta('ViewContent', {
       customData: {
         content_name: 'Pós GGSR',
-        content_category: 'lista-de-espera',
+        content_category: isLp2 ? 'lista-de-esperalp2' : 'lista-de-espera',
       },
     });
-  }, [isWaitingList]);
+  }, [isWaitingList, isLp2]);
 
   const openModal = () => setIsModalOpen(true);
 

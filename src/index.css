@@ -18,6 +18,7 @@
     color: var(--color-brand-light);
     font-family: var(--font-secondary);
     overflow-x: hidden;
+    text-wrap: pretty;
   }
 
   h1,
@@ -27,6 +28,14 @@
   h5,
   h6 {
     font-family: var(--font-primary);
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  button,
+  a {
+    text-wrap: pretty;
   }
 }
 
@@ -117,5 +126,14 @@
 
   to {
     transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
