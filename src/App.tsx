@@ -35,21 +35,21 @@ function App() {
     }
   }, [isWaitingList, isLp2]);
 
-  if (isLp2) {
-    return <ListaDeEsperaLp2 />;
-  }
-
   useEffect(() => {
-    if (!isWaitingList) return;
+    if (!isWaitingList || isLp2) return;
     if (viewContentSent.current) return;
     viewContentSent.current = true;
     trackMeta('ViewContent', {
       customData: {
         content_name: 'Pós GGSR',
-        content_category: isLp2 ? 'lista-de-esperalp2' : 'lista-de-espera',
+        content_category: 'lista-de-espera',
       },
     });
   }, [isWaitingList, isLp2]);
+
+  if (isLp2) {
+    return <ListaDeEsperaLp2 />;
+  }
 
   const openModal = () => setIsModalOpen(true);
 

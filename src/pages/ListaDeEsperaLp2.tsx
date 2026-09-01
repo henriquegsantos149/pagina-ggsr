@@ -275,6 +275,7 @@ export default function ListaDeEsperaLp2() {
   // Send ViewContent on load
   const viewContentSent = useRef(false);
   useEffect(() => {
+    document.title = "Lista de Espera | Pós-Graduação em Georreferenciamento, Geoprocessamento e Sensoriamento Remoto";
     if (viewContentSent.current) return;
     viewContentSent.current = true;
     trackMeta('ViewContent', {
@@ -343,9 +344,7 @@ export default function ListaDeEsperaLp2() {
       trackMeta('Lead', metaOptions);
 
       if (formData.graduacao.toLowerCase() === 'sim') {
-        if (typeof window !== 'undefined' && (window as any).dataLayer) {
-          (window as any).dataLayer.push({ event: 'lead_qualificado' });
-        }
+        window.dataLayer?.push({ event: 'lead_qualificado' });
         trackMeta('lead_qualificado', metaOptions);
       }
 
