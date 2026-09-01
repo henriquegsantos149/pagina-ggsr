@@ -376,9 +376,18 @@ export default function ListaDeEsperaLp2() {
     <div className="min-h-screen bg-[#07090e] text-[#F2F2F2] font-sans antialiased selection:bg-[#3BA2D9] selection:text-[#0A0D1A] overflow-x-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative pt-8 pb-16 px-4 md:px-8 flex flex-col items-center justify-center text-center overflow-hidden border-b border-white/5">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0e1726]/80 via-[#07090e] to-[#07090e] pointer-events-none" />
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#24b8bc]/10 rounded-full blur-[140px] pointer-events-none" />
+      <section className="relative pt-12 pb-20 px-4 md:px-8 flex flex-col items-center justify-center text-center overflow-hidden border-b border-white/5">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
+          style={{
+            backgroundImage: `url('https://www.lp.ambientalpro.com.br/wp-content/uploads/2025/12/FUNDO-1-scaled.png')`,
+          }}
+        />
+        
+        {/* Overlays for depth and readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-[#07090e]/70 to-[#07090e] pointer-events-none" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#24b8bc]/15 rounded-full blur-[150px] pointer-events-none" />
         
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
           {/* GGSR 3D Logo / Artwork */}
