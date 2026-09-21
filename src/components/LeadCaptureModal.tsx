@@ -188,17 +188,15 @@ export default function LeadCaptureModal({ isOpen, onClose, checkoutUrl, isWaiti
               </div>
             ) : (
               <div className="relative z-10">
-                <h3 className="text-2xl md:text-3xl font-bold mb-2 font-primary text-white uppercase tracking-tight">
-                  {isWaitingList ? 'Lista de Espera' : 'Falta pouco!'}
+                <h3 className="text-xl md:text-2xl font-bold mb-2 font-primary text-white uppercase tracking-tight text-center">
+                  {isWaitingList ? 'Preencha suas informações' : 'Falta pouco!'}
                 </h3>
                 {isWaitingList ? (
-                  <div className="bg-[var(--color-brand-primary)]/10 border border-[var(--color-brand-primary)]/30 rounded-lg p-4 mb-8 shadow-inner">
-                    <p className="text-white font-primary font-bold text-sm md:text-base leading-relaxed text-left">
-                      Preencha os dados abaixo para entrar na lista de espera da Pós GGSR e garantir um <span className="text-[var(--color-brand-primary)]">desconto exclusivo</span>.
-                    </p>
-                  </div>
+                  <p className="text-yellow-400 mb-8 font-primary font-medium text-sm md:text-base text-center">
+                    Garanta desconto exclusivo para a próxima turma
+                  </p>
                 ) : (
-                  <p className="text-[var(--color-brand-light)]/60 mb-8 font-secondary text-sm md:text-base">
+                  <p className="text-[var(--color-brand-light)]/60 mb-8 font-secondary text-sm md:text-base text-center">
                     Preencha os dados abaixo para continuar sua inscrição na Pós GGSR.
                   </p>
                 )}
@@ -304,8 +302,8 @@ export default function LeadCaptureModal({ isOpen, onClose, checkoutUrl, isWaiti
                       </>
                     ) : (
                       <>
-                        <span>{isWaitingList ? 'Entrar na Lista de Espera' : 'Continuar para Inscrição'}</span>
-                        <Send className="w-6 h-6" />
+                        <span>{isWaitingList ? 'Quero me inscrever' : 'Continuar para Inscrição'}</span>
+                        {!isWaitingList && <Send className="w-6 h-6" />}
                       </>
                     )}
                   </button>

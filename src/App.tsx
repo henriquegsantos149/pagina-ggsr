@@ -31,7 +31,7 @@ function App() {
 
   useEffect(() => {
     if (isWaitingList || isLp2) {
-      document.title = "Lista de Espera | Pós-Graduação em Georreferenciamento, Geoprocessamento e Sensoriamento Remoto";
+      document.title = "Pós-Graduação em Georreferenciamento, Geoprocessamento e Sensoriamento Remoto";
     }
   }, [isWaitingList, isLp2]);
 

@@ -275,7 +275,7 @@ export default function ListaDeEsperaLp2() {
   // Send ViewContent on load
   const viewContentSent = useRef(false);
   useEffect(() => {
-    document.title = "Lista de Espera | Pós-Graduação em Georreferenciamento, Geoprocessamento e Sensoriamento Remoto";
+    document.title = "Pós-Graduação em Georreferenciamento, Geoprocessamento e Sensoriamento Remoto";
     if (viewContentSent.current) return;
     viewContentSent.current = true;
     trackMeta('ViewContent', {
