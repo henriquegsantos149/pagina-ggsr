@@ -64,7 +64,7 @@ function App() {
       <TargetAudience />
       <Faculty />
       <CourseInfo />
-      <Pricing onOpenModal={openModal} isWaitingList={isWaitingList} />
+      {!isWaitingList && <Pricing onOpenModal={openModal} isWaitingList={isWaitingList} />}
       <Testimonials />
       <FAQ />
       <CallToAction onOpenModal={openModal} isWaitingList={isWaitingList} />

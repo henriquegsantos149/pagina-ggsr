@@ -67,9 +67,11 @@ export default function Pricing({ onOpenModal, isWaitingList = false }: PricingP
               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gradient opacity-[0.05] rounded-full blur-[50px] pointer-events-none"></div>
               
               <div>
-                <span className="inline-block px-3 py-1 bg-brand-gradient text-[var(--color-brand-dark)] font-bold text-xs uppercase tracking-wider rounded-full mb-6 font-primary">
-                  {isWaitingList ? 'Lista de Espera' : 'Acesso Completo'}
-                </span>
+                {!isWaitingList && (
+                  <span className="inline-block px-3 py-1 bg-brand-gradient text-[var(--color-brand-dark)] font-bold text-xs uppercase tracking-wider rounded-full mb-6 font-primary">
+                    Acesso Completo
+                  </span>
+                )}
                 
                 <h4 className="text-lg font-medium text-[var(--color-brand-dark)]/60 font-secondary uppercase tracking-widest mb-2">
                   Condições Especiais
@@ -87,19 +89,13 @@ export default function Pricing({ onOpenModal, isWaitingList = false }: PricingP
                   </span>
                 </div>
 
-                <div className="border-t border-slate-200/80 pt-6 mb-8">
-                  {isWaitingList ? (
-                    <div className="bg-[var(--color-brand-primary)]/10 border border-[var(--color-brand-primary)]/30 rounded-lg p-4 shadow-inner">
-                      <p className="text-[var(--color-brand-dark)] font-primary font-bold text-base leading-relaxed text-left uppercase tracking-wide">
-                        Entre na lista de espera para garantir sua vaga e um <span className="text-[var(--color-brand-primary)]">desconto exclusivo</span>.
-                      </p>
-                    </div>
-                  ) : (
+                {!isWaitingList && (
+                  <div className="border-t border-slate-200/80 pt-6 mb-8">
                     <p className="text-[var(--color-brand-dark)]/80 font-secondary text-sm leading-relaxed">
                       Aproveite as condições facilitadas para garantir sua vaga na pós-graduação e iniciar imediatamente.
                     </p>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
 
               <div>
