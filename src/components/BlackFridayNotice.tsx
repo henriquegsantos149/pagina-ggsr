@@ -1,13 +1,35 @@
 import { useEffect, useRef, useState } from 'react';
 import './black-friday.css';
 
+// 23/10/2026, às 08h no horário de Brasília (UTC−03:00).
+const BLACK_FRIDAY_START = Date.parse('2026-10-23T08:00:00-03:00');
+
 export default function BlackFridayNotice() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [dismissed, setDismissed] = useState(false);
+  const [campaignActive, setCampaignActive] = useState(false);
+
+  useEffect(() => {
+    // Também reativa em abas que permaneceram abertas durante a pausa.
+    const activateWhenReady = () => {
+      if (Date.now() >= BLACK_FRIDAY_START) setCampaignActive(true);
+    };
+    activateWhenReady();
+    const timer = window.setTimeout(activateWhenReady,
+      Math.min(Math.max(0, BLACK_FRIDAY_START - Date.now()), 2147483647));
+    window.addEventListener('focus', activateWhenReady);
+    document.addEventListener('visibilitychange', activateWhenReady);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener('focus', activateWhenReady);
+      document.removeEventListener('visibilitychange', activateWhenReady);
+    };
+  }, []);
+
 
   useEffect(() => {
     const dialog = dialogRef.current;
-    if (!dialog || dismissed) return;
+    if (!dialog || dismissed || !campaignActive) return;
     const previousFocus = document.activeElement as HTMLElement | null;
     const previousOverflow = document.body.style.overflow;
     if (!dialog.open) dialog.showModal();
@@ -16,7 +38,9 @@ export default function BlackFridayNotice() {
       document.body.style.overflow = previousOverflow;
       previousFocus?.focus();
     };
-  }, [dismissed]);
+  }, [dismissed, campaignActive]);
+
+  if (!campaignActive) return null;
 
   return (
     <>
