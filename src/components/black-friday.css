@@ -41,13 +41,14 @@
   transition: background .2s, box-shadow .2s;
 }
 .bf-notice a.bf-notice-confirm:hover, .bf-bottom-banner a.bf-banner-cta:hover { background: #d3ff85; color: #101710; }
-.bf-bottom-banner a.bf-banner-cta { width: auto; flex-shrink: 0; min-height: 40px; padding: 10px 16px; }
+.bf-bottom-banner a.bf-banner-cta { width: auto; flex-shrink: 0; min-height: 32px; padding: 7px 12px; border-radius: 9px; font-size: 12px; }
 .bf-bottom-banner a.bf-banner-cta:focus-visible { outline: 3px solid #f2cf00; outline-offset: 3px; }
 .bf-notice-close:hover { background: rgb(255 255 255 / 10%); border-color: rgb(255 255 255 / 20%); }
 @media (prefers-reduced-transparency: reduce) {
   .bf-notice { background: #0d1314; -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
-.bf-notice button:focus-visible, .bf-notice a:focus-visible { outline: 3px solid #f2cf00; outline-offset: 3px; }
+.bf-notice a:focus-visible { outline: 3px solid #f2cf00; outline-offset: 3px; }
+.bf-notice .bf-notice-close:focus-visible { outline: none; border-color: transparent; color: #8ee322; }
 
 /* Aviso persistente da campanha. Reserva espaço para o fim da página. */
 body:has(.bf-bottom-banner) { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
