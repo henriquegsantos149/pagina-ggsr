@@ -76,7 +76,7 @@ export default function Testimonials() {
                   key={index}
                   initial={false}
                   animate={{
-                    x: position === 'center' ? 0 : position === 'left' ? (window.innerWidth < 768 ? -200 : -350) : (window.innerWidth < 768 ? 200 : 350),
+                    x: position === 'center' ? 0 : position === 'left' ? (typeof window !== 'undefined' && window.innerWidth < 768 ? -200 : -350) : (typeof window !== 'undefined' && window.innerWidth < 768 ? 200 : 350),
                     scale: position === 'center' ? 1 : 0.8,
                     opacity: position === 'center' ? 1 : 0.3,
                     filter: position === 'center' ? 'blur(0px)' : 'blur(8px)',
