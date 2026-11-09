@@ -80,6 +80,7 @@ export default function BlackFridayNotice() {
     <aside className="bf-bottom-banner" aria-label="Aviso de Black Friday">
       <span className="bf-bottom-badge"><span>BLACK</span> FRIDAY</span>
       <p><strong>A Black Friday já começou!</strong><span>{campaign.banner}</span></p>
+      <a className="bf-banner-cta" href={campaign.href}>{campaign.button}</a>
     </aside>
     {popupActive && !dismissed && <dialog ref={dialogRef} className="bf-notice" aria-labelledby="bf-notice-title" aria-describedby="bf-notice-description"
       onClose={() => setDismissed(true)} onClick={(event) => {
